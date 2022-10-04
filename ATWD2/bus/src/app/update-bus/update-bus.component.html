@@ -1,0 +1,177 @@
+<div class="ui raised segment">
+    <h2 class="ui header">Update Bus Route</h2>
+    <form 
+        [formGroup]="updateBusForm"
+        (ngSubmit)="onSubmit(updateBusForm.value)"
+        class="ui form">
+      <div class="field">
+        <label for="routeNumber">Route ID</label>
+        <input type="text" 
+          id="routeNumber" 
+          placeholder=""
+          formControlName="routeNumber">
+      </div>
+
+
+      <div class="field">
+        <label for="fare">Fare</label>
+        <input type="text" 
+          id="fare" 
+          placeholder=""
+          formControlName="fare">
+      </div>
+
+      <div class="field">
+        <label for="startPoint">Start Point</label>
+        <input type="text" 
+          id="startPoint" 
+          placeholder=""
+          formControlName="startPoint">
+      </div>
+      
+      <div class="field">
+        <label for="endPoint">End Point</label>
+        <input type="text" 
+          id="endPoint" 
+          placeholder=""
+          formControlName="endPoint">
+      </div>
+
+      <div class="field">
+        <label for="COMPANY_CODE">COMPANY_CODE</label>
+        <input type="text" 
+          id="COMPANY_CODE" 
+          placeholder=""
+          formControlName="COMPANY_CODE">
+      </div>
+
+      <div class="field">
+        <label for="ROUTE_NAMEC">ROUTE_NAMEC</label>
+        <input type="text" 
+          id="ROUTE_NAMEC" 
+          placeholder=""
+          formControlName="ROUTE_NAMEC">
+      </div>
+
+      <div class="field">
+        <label for="ROUTE_NAMES">ROUTE_NAMES</label>
+        <input type="text" 
+          id="ROUTE_NAMES" 
+          placeholder=""
+          formControlName="ROUTE_NAMES">
+      </div>
+
+      <div class="field">
+        <label for="ROUTE_NAMEE">ROUTE_NAMEE</label>
+        <input type="text" 
+          id="ROUTE_NAMEE" 
+          placeholder=""
+          formControlName="ROUTE_NAMEE">
+      </div>
+
+      <div class="field">
+        <label for="ROUTE_TYPE">ROUTE_TYPE</label>
+        <input type="text" 
+          id="ROUTE_TYPE" 
+          placeholder=""
+          formControlName="ROUTE_TYPE">
+      </div>
+
+      <div class="field">
+        <label for="SERVICE_MODE">SERVICE_MODE</label>
+        <input type="text" 
+          id="SERVICE_MODE" 
+          placeholder=""
+          formControlName="SERVICE_MODE">
+      </div>
+
+      <div class="field">
+        <label for="SPECIAL_TYPE">SPECIAL_TYPE</label>
+        <input type="text" 
+          id="SPECIAL_TYPE" 
+          placeholder=""
+          formControlName="SPECIAL_TYPE">
+      </div>
+
+      <div class="field">
+        <label for="JOURNEY_TIME">JOURNEY_TIME</label>
+        <input type="text" 
+          id="JOURNEY_TIME" 
+          placeholder=""
+          formControlName="JOURNEY_TIME">
+      </div>
+
+      <div class="field">
+        <label for="LOC_START_NAMEC">LOC_START_NAMEC</label>
+        <input type="text" 
+          id="LOC_START_NAMEC" 
+          placeholder=""
+          formControlName="LOC_START_NAMEC">
+      </div>
+
+      <div class="field">
+        <label for="LOC_START_NAMES">LOC_START_NAMES</label>
+        <input type="text" 
+          id="LOC_START_NAMES" 
+          placeholder=""
+          formControlName="LOC_START_NAMES">
+      </div>
+
+      <div class="field">
+        <label for="LOC_END_NAMEC">LOC_END_NAMEC</label>
+        <input type="text" 
+          id="LOC_END_NAMEC" 
+          placeholder=""
+          formControlName="LOC_END_NAMEC">
+      </div>
+
+      <div class="field">
+        <label for="LOC_END_NAMES">LOC_END_NAMES</label>
+        <input type="text" 
+          id="LOC_END_NAMES" 
+          placeholder=""
+          formControlName="LOC_END_NAMES">
+      </div>
+
+      <div class="field">
+        <label for="HYPERLINK_C">HYPERLINK_C</label>
+        <input type="text" 
+          id="HYPERLINK_C" 
+          placeholder=""
+          formControlName="HYPERLINK_C">
+      </div>
+
+      <div class="field">
+        <label for="HYPERLINK_S">HYPERLINK_S</label>
+        <input type="text" 
+          id="HYPERLINK_S" 
+          placeholder=""
+          formControlName="HYPERLINK_S">
+      </div>
+
+      <div class="field">
+        <label for="HYPERLINK_E">HYPERLINK_E</label>
+        <input type="text" 
+          id="HYPERLINK_E" 
+          placeholder=""
+          formControlName="HYPERLINK_E">
+      </div>
+
+      <div class="field">
+        <label for="LAST_UPDATE_DATE">LAST_UPDATE_DATE</label>
+        <input type="text" 
+          id="LAST_UPDATE_DATE" 
+          placeholder=""
+          formControlName="LAST_UPDATE_DATE">
+      </div>
+
+      
+  
+      <button type="submit" class="ui button" button class="ui primary button">Submit</button>
+    </form>
+
+    <div>
+      {{ serverData | json }}
+    </div>
+  </div>
+  

@@ -1,0 +1,188 @@
+<html>
+
+<style>
+body {background-color: #FFFACD;}
+  #map {
+    height: 50%;
+	width:50%;
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+input[type=text]{
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;    
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+
+</style>
+
+<script>
+var request = new XMLHttpRequest();
+
+function ajaxSearch() {
+	var keyword = document.getElementById("keyword").value;
+	var resource = document.getElementById("resource").value;
+    var type = document.getElementById("type").value;
+	var url = "http://localhost/ATWD1/Controller.php/"+resource+"/"+ type + "/" +keyword;
+	request.open("GET", url, true);
+	request.onreadystatechange = displayResult;
+	request.send(null);
+}
+      
+function Update() {
+    var resource2 = document.getElementById("resource2").value;
+	var STOP_ID = document.getElementById("PutSTOP_ID").value;
+	var STOP_TYPE = document.getElementById("PutSTOP_TYPE").value;
+	var X = document.getElementById("PutX").value;
+	var Y = document.getElementById("PutY").value;
+	var LAST_UPDATE_DATE = document.getElementById("PutLAST_UPDATE_DATE").value;
+	var url = "http://localhost/ATWD1/Controller.php/"+resource2+"/"+STOP_ID+"/"+STOP_TYPE+"/"+X+"/"+Y+"/"+LAST_UPDATE_DATE;
+	request.open("Put",url,true);
+	request.onreadystatechange = display;
+	request.send(null);
+}
+
+function Add() {
+    var resource3 = document.getElementById("resource3").value;
+	var STOP_ID = document.getElementById("PostSTOP_ID").value;
+	var STOP_TYPE = document.getElementById("PostSTOP_TYPE").value;
+	var X = document.getElementById("PostX").value;
+	var Y = document.getElementById("PostY").value;
+	var LAST_UPDATE_DATE = document.getElementById("PostLAST_UPDATE_DATE").value;
+	var url = "http://localhost/ATWD1/Controller.php/"+resource3+"/"+ROUTE_ID+"/"+FULL_FARE+"/"+LOC_START_NAMEE+"/"+LOC_END_NAMEE;
+	request.open("Post",url,true);
+	request.onreadystatechange = display2;
+	request.send(null);
+}
+    
+function Delete(){
+        var resource4 = document.getElementById("resource4").value;
+		var keyword = document.getElementById("Deletekeyword").value;
+	    var url = "http://localhost/ATWD1/Controller.php/"+resource4+"/"+keyword;
+	    request.open("Delete",url,true);
+	    request.onreadystatechange = display3;
+	    request.send(null);
+}
+    
+function displayResult() {
+	if (request.readyState == 4) {
+		if (request.status == 200) {
+            var html="<table border=1>";
+			var answer = JSON.parse(request.responseText);
+			for (var item of answer) {
+				html+="<tr>";
+				html+="<td>"+item.STOP_ID+"</td>";
+				html+="<td>"+item.STOP_TYPE+"</td>";
+				html+="<td>"+item.X+"</td>";
+				html+="<td>"+item.Y+"</td>";
+				html+='<td>'+item.LAST_UPDATE_DATE+'</td>';
+				html+="</tr>";
+			}
+			html+="</table>";	
+			var element = document.getElementById("result");
+			element.innerHTML = html;
+		}
+	}
+
+}
+
+
+function display() {
+	if (request.readyState == 4) {
+		if (request.status == 200) {
+			var element = document.getElementById("result2");
+			element.innerHTML = request.responseText;
+		}
+	}
+
+}
+    
+function display2() {
+	if (request.readyState == 4) {
+		if (request.status == 200) {
+			var element = document.getElementById("result3");
+			element.innerHTML = request.responseText;
+		}
+	}
+
+}
+    
+ function display3() {
+	if (request.readyState == 4) {
+		if (request.status == 200) {
+			var element = document.getElementById("result4");
+			element.innerHTML = request.responseText;
+		}
+	}
+
+}
+</script>
+
+<body>
+
+<table>
+<b>Search Function</b>
+<tr>
+<td>Resource:</td><td><input type="text" id="resource"></tr>
+<tr>
+<td>ID:</td><td><input type="text" id="keyword">
+</tr>
+<td>type:</td><td><input type="text" id="type">
+<tr>
+<td><button onclick="ajaxSearch()" >Search</button>
+</tr>
+</table>
+<div id="result"></div>
+
+
+<b>Update Function</b>
+<br>
+<fieldset>
+Resource: <input type="text" id ="resource2"><br>
+ID: <input type="text" id ="PutSTOP_ID"><br>
+STOP TYPE: <input type="text" id ="PutSTOP_TYPE"><br>
+X: <input type="text" id ="PutX"><br>
+Y: <input type="text" id ="PutY"><br>
+LAST UPDATE DATE: <input type="text" id ="PutLAST_UPDATE_DATE"><br>
+<button onclick="Update()">Update</button>
+<div id ="result2"></div>
+</fieldset>
+<br>
+
+<b>Add Function</b>
+<br><fieldset>
+Resource: <input type="text" id ="resource3"><br>
+ID: <input type="text" id ="PostSTOP_ID"><br>
+STOP TYPE: <input type="text" id ="PostSTOP_TYPE"><br>
+X: <input type="text" id ="PostX"><br>
+Y: <input type="text" id ="PostY"><br>
+LAST UPDATE DATE: <input type="text" id ="PostLAST_UPDATE_DATE"><br>
+<button onclick="Add()">Add data</button>
+<div id ="result3"></div>
+</fieldset>
+
+<br>
+<b>Delete Function</b>
+<br><fieldset>
+Resource: <input type="text" id ="resource4"><br>
+ID: <input type="text" id ="Deletekeyword"><br/>
+<button onclick="Delete()">Delete data</button></fieldset>
+<div id ="result4"></div>
+
+<br>
+<br>
+</body>
+</html>

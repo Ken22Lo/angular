@@ -1,0 +1,22 @@
+<div class="ui raised segment">
+    <h2 class="ui header">Delete Bus Route</h2>
+    <form 
+        [formGroup]="deleteBusForm"
+        (ngSubmit)="onSubmit(deleteBusForm.value)" class="ui form">
+      <div class="field">
+        <label for="routeNumber">Route ID</label>
+        <input type="text" 
+          id="routeNumber" 
+          placeholder=""
+          [formControl]="deleteBusForm.controls['routeNumber']">
+      </div>
+  
+      <button type="submit" class="ui button" button class="ui primary button">Submit</button>
+    </form>
+    <div>
+        <pre>{{ serverData | json }} </pre>
+    </div>
+
+  </div>
+  
+
